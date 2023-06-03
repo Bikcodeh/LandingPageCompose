@@ -1,6 +1,7 @@
 package com.bikcode
 
 import androidx.compose.runtime.*
+import com.bikcode.models.Theme
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.core.App
 import com.varabyte.kobweb.silk.init.InitSilk
@@ -14,7 +15,7 @@ import org.jetbrains.compose.web.css.*
 
 @InitSilk
 fun updateTheme(ctx: InitSilkContext) {
-    // Configure silk here
+
 }
 
 @App
