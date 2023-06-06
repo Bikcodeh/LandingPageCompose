@@ -2,11 +2,13 @@ package com.bikcode.sections
 
 import androidx.compose.runtime.Composable
 import com.bikcode.components.Header
+import com.bikcode.components.SocialBar
 import com.bikcode.models.Section
 import com.bikcode.util.Constants.SECTION_WIDTH
 import com.bikcode.util.Res
 import com.varabyte.kobweb.compose.css.ObjectFit
 import com.varabyte.kobweb.compose.foundation.layout.Box
+import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
@@ -25,7 +27,7 @@ fun MainSection() {
         contentAlignment = Alignment.TopCenter
     ) {
         MainBackground()
-        Header()
+        MainContent()
     }
 }
 
@@ -36,4 +38,15 @@ fun MainBackground() {
         src = Res.Image.background,
         desc = "Background"
     )
+}
+
+@Composable
+fun MainContent() {
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Header()
+        SocialBar()
+    }
 }
