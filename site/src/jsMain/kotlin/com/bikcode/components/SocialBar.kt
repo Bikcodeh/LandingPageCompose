@@ -3,6 +3,7 @@ package com.bikcode.components
 import androidx.compose.runtime.Composable
 import com.bikcode.styles.SocialLinkStyle
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
+import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -38,26 +39,29 @@ private fun SocialLinks() {
         path = "https://google.com"
     ) {
         FaFacebook(
-            modifier = SocialLinkStyle.toModifier().margin(bottom = 40.px),
+            modifier = SocialLinkStyle.toModifier(),
             size = IconSize.LG
         )
     }
+    Box(modifier = Modifier.margin(bottom = 30.px))
     Link(
         path = "https://google.com"
     ) {
         FaTwitter(
-            modifier = SocialLinkStyle.toModifier().margin(bottom = 40.px),
+            modifier = SocialLinkStyle.toModifier(),
             size = IconSize.LG
         )
     }
+    Box(modifier = Modifier.margin(bottom = 30.px))
     Link(
         path = "https://google.com"
     ) {
         FaLinkedin(
-            modifier = SocialLinkStyle.toModifier().margin(bottom = 40.px),
+            modifier = SocialLinkStyle.toModifier(),
             size = IconSize.LG
         )
     }
+    Box(modifier = Modifier.margin(bottom = 30.px))
     Link(
         path = "https://google.com"
     ) {
