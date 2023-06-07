@@ -6,12 +6,14 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.color
 import com.varabyte.kobweb.compose.ui.modifiers.transform
 import com.varabyte.kobweb.compose.ui.modifiers.transition
+import com.varabyte.kobweb.compose.ui.modifiers.width
 import com.varabyte.kobweb.silk.components.style.ComponentStyle
 import com.varabyte.kobweb.silk.components.style.anyLink
 import com.varabyte.kobweb.silk.components.style.hover
 import org.jetbrains.compose.web.ExperimentalComposeWebApi
 import org.jetbrains.compose.web.css.deg
 import org.jetbrains.compose.web.css.ms
+import org.jetbrains.compose.web.css.px
 
 val NavigationItemStyle by ComponentStyle {
     base {
@@ -52,5 +54,16 @@ val SocialLinkStyle by ComponentStyle {
     }
     hover {
         Modifier.color(Theme.Primary.rgb)
+    }
+}
+
+val MainButtonStyle by ComponentStyle {
+    base {
+        Modifier
+            .width(100.px)
+            .transition(CSSTransition(property = "width", duration = 200.ms))
+    }
+    hover {
+        Modifier.width(120.px)
     }
 }
