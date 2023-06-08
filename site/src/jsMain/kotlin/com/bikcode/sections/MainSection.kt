@@ -6,6 +6,7 @@ import com.bikcode.components.SocialBar
 import com.bikcode.models.Section
 import com.bikcode.models.Theme
 import com.bikcode.styles.MainButtonStyle
+import com.bikcode.styles.MainImageStyle
 import com.bikcode.util.Constants.FONT_FAMILY
 import com.bikcode.util.Constants.LOREM_IPSUM_SHORTEST
 import com.bikcode.util.Constants.SECTION_WIDTH
@@ -168,7 +169,7 @@ fun MainImage() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = MainImageStyle.toModifier().fillMaxWidth(),
             src = Res.Image.mainImage,
             desc = "Main Image"
         )
