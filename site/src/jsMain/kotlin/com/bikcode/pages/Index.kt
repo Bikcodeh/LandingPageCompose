@@ -1,6 +1,7 @@
 package com.bikcode.pages
 
 import androidx.compose.runtime.*
+import com.bikcode.sections.AboutSection
 import com.bikcode.sections.MainSection
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -18,5 +19,6 @@ fun HomePage() {
         verticalArrangement = Arrangement.Top
     ) {
         MainSection()
+        AboutSection()
     }
 }
