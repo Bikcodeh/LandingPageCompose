@@ -1,6 +1,7 @@
 package com.bikcode.sections
 
 import androidx.compose.runtime.Composable
+import com.bikcode.components.SectionTitle
 import com.bikcode.components.SkillBar
 import com.bikcode.models.Section
 import com.bikcode.util.Constants
@@ -23,6 +24,6 @@ fun AboutSection() {
             .padding(topBottom = 15.px),
         contentAlignment = Alignment.Center
     ) {
-        SkillBar(name = "Creative")
+       SectionTitle(section = Section.About)
     }
 }
