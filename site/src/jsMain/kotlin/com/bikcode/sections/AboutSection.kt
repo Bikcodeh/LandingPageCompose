@@ -104,7 +104,7 @@ fun AboutMe() {
             Text(LOREM_IPSUM_SHORT)
         }
         Skill.values().forEach { skill ->
-            SkillBar(name = skill.name, percentage = skill.percentage)
+            SkillBar(name = skill.title, percentage = skill.percentage)
         }
     }
 }
