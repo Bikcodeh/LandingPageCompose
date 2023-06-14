@@ -1,6 +1,6 @@
 package com.bikcode.sections
 
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import com.bikcode.components.SectionTitle
 import com.bikcode.components.SkillBar
 import com.bikcode.models.Section
@@ -10,7 +10,9 @@ import com.bikcode.styles.AboutImageStyle
 import com.bikcode.styles.AboutTextStyle
 import com.bikcode.util.Constants
 import com.bikcode.util.Constants.LOREM_IPSUM_SHORT
+import com.bikcode.util.ObserveViewportEntered
 import com.bikcode.util.Res
+import com.bikcode.util.animateNumbers
 import com.varabyte.kobweb.compose.css.FontStyle
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
@@ -26,6 +28,7 @@ import com.varabyte.kobweb.silk.components.layout.numColumns
 import com.varabyte.kobweb.silk.components.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.components.style.toModifier
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
+import kotlinx.coroutines.launch
 import org.jetbrains.compose.web.css.AlignContent
 import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.percent
@@ -84,10 +87,30 @@ fun AboutImage() {
 @Composable
 fun AboutMe() {
     val breakpoint = rememberBreakpoint()
+    val scope = rememberCoroutineScope()
+    var viewportEntered by remember { mutableStateOf(false) }
+    val animatedPercentage = remember { mutableStateListOf(0, 0, 0, 0, 0) }
+    ObserveViewportEntered(
+        sectionId = Section.About.id,
+        distanceFromTop = 300.0,
+        onViewportEntered = {
+            viewportEntered = true
+            Skill.values().forEach { skill ->
+                scope.launch {
+                    animateNumbers(
+                        number = skill.percentage.value.toInt(),
+                        onUpdate = {
+                            animatedPercentage[skill.ordinal] = it
+                        }
+                    )
+                }
+            }
+        }
+    )
     Column(
         modifier = Modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.Center,
-        horizontalAlignment =  if(breakpoint >= Breakpoint.MD) Alignment.Start else Alignment.CenterHorizontally
+        horizontalAlignment = if (breakpoint >= Breakpoint.MD) Alignment.Start else Alignment.CenterHorizontally
     ) {
         SectionTitle(section = Section.About)
         P(
@@ -104,7 +127,11 @@ fun AboutMe() {
             Text(LOREM_IPSUM_SHORT)
         }
         Skill.values().forEach { skill ->
-            SkillBar(name = skill.title, percentage = skill.percentage)
+            SkillBar(
+                name = skill.title, index = skill.ordinal,
+                percentage = if (viewportEntered) skill.percentage else 0.percent,
+                animatedPercentage = if (viewportEntered) animatedPercentage[skill.ordinal] else 0
+            )
         }
     }
 }
