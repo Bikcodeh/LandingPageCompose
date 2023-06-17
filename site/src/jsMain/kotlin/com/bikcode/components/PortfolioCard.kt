@@ -33,15 +33,16 @@ fun PortfolioCard(
     link: String = WEBSITE
 ) {
     Link(
-        modifier = PortfolioSectionStyle.toModifier().textDecorationLine(TextDecorationLine.None),
+        modifier = PortfolioSectionStyle.toModifier().textDecorationLine(TextDecorationLine.None).margin(right = 25.px),
         path = link,
         openExternalLinksStrategy = OpenLinkStrategy.IN_NEW_TAB
     ) {
-        Column(modifier = modifier.id("columnParent")) {
+        Column(modifier = modifier.id("columnParent").size(300.px)) {
             Box(modifier = Modifier.id("boxParent").fillMaxWidth().maxWidth(300.px).margin(bottom = 20.px)) {
                 Image(
                     modifier = Modifier
-                        .size(300.px)
+                        .id("imagePortfolio")
+                        .fillMaxSize()
                         .objectFit(ObjectFit.Cover), src = portfolio.image,
                     desc = portfolio.image
                 )

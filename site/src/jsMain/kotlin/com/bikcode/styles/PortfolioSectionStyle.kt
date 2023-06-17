@@ -14,11 +14,23 @@ val PortfolioSectionStyle by ComponentStyle {
     cssRule(" > #columnParent > #boxParent > #greenOverlay") {
         Modifier
             .width(0.px)
-            .transition(CSSTransition(property = "width", duration = 500.ms))
+            .borderRadius(r = 0.px)
+            .transition(
+                CSSTransition(property = "width", duration = 500.ms),
+                CSSTransition(property = "border-radius", duration = 400.ms)
+            )
     }
 
     cssRule(":hover > #columnParent > #boxParent > #greenOverlay") {
-        Modifier.width(300.px)
+        Modifier.width(300.px).borderRadius(r = 20.px)
+    }
+
+    cssRule(" > #columnParent > #boxParent > #imagePortfolio") {
+        Modifier.borderRadius(r = 0.px).transition(CSSTransition(property = "border-radius", duration = 400.ms))
+    }
+
+    cssRule(":hover > #columnParent > #boxParent > #imagePortfolio") {
+        Modifier.borderRadius(r = 20.px).transition(CSSTransition(property = "border-radius", duration = 400.ms))
     }
 
     cssRule(" > #columnParent > #boxParent > #greenOverlay > #linkIcon") {
