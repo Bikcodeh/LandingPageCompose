@@ -3,6 +3,7 @@ package com.bikcode.util
 import org.jetbrains.compose.web.css.px
 
 object Constants {
+    const val WEBSITE = "https://stevdza-san.com/"
     const val FONT_FAMILY = "Verdana"
     val SECTION_WIDTH = 1920.px
     const val LOREM_IPSUM_LONG =
@@ -33,5 +34,10 @@ object Res {
         const val logo = "logo.svg"
         const val mainImage = "main_image.png"
         const val about = "about_image.png"
+        const val portfolio1 = "portfolio1.png"
+        const val portfolio2 = "portfolio2.png"
+        const val portfolio3 = "portfolio3.png"
+        const val portfolio4 = "portfolio4.jpg"
+        const val portfolio5 = "portfolio5.png"
     }
 }
