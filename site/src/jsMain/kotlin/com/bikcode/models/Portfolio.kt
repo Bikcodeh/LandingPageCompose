@@ -31,5 +31,20 @@ enum class Portfolio(
         image = Res.Image.portfolio5,
         title = "Platform for Online Courses",
         description = "Web/Mobile App"
+    ),
+    Six(
+        image = Res.Image.portfolio5,
+        title = "Platform for Online Courses",
+        description = "Web/Mobile App"
+    ),
+    Seven(
+        image = Res.Image.portfolio5,
+        title = "Platform for Online Courses",
+        description = "Web/Mobile App"
+    ),
+    Eight(
+        image = Res.Image.portfolio1,
+        title = "Kudoe",
+        description = "Web Design"
     )
 }
