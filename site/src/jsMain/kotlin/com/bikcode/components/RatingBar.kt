@@ -18,7 +18,7 @@ fun RatingBar(
     modifier: Modifier = Modifier,
     rating: Double = 0.0,
     stars: Int = 5,
-    starsColor: Color.Rgb = Colors.Yellow,
+    starsColor: Color.Rgb = Colors.YellowGreen,
 ) {
     val voteAverage = if (rating > 5.0) 5.0 else rating
     val filledStars = floor(voteAverage).toInt()

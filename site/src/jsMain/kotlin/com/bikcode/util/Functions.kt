@@ -43,3 +43,16 @@ suspend fun animateNumbers(
         onUpdate(it)
     }
 }
+
+suspend fun animateNumbersReverse(
+    number: Int,
+    delay: Long = 10L,
+    onUpdate: (Int) -> Unit
+) {
+    var num = number
+    while(num >= 0) {
+        num--
+        delay(delay)
+        onUpdate(num)
+    }
+}
