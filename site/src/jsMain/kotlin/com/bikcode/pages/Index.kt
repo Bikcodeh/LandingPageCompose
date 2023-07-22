@@ -24,5 +24,6 @@ fun HomePage() {
         AchievementSection()
         TestimonialSection()
         ExperienceSection()
+        ContactSection()
     }
 }
