@@ -25,6 +25,7 @@ import org.jetbrains.compose.web.css.Position
 import org.jetbrains.compose.web.css.ms
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
+import kotlin.math.max
 
 @Composable
 fun BackToTopButton() {
