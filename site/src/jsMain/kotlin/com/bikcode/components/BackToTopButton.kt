@@ -13,6 +13,7 @@ import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.silk.components.icons.fa.FaArrowUp
 import com.varabyte.kobweb.silk.components.icons.fa.IconSize
 import com.varabyte.kobweb.silk.components.style.breakpoint.Breakpoint
@@ -36,7 +37,13 @@ fun BackToTopButton() {
     }
 
     Column(
-        modifier = Modifier.fillMaxSize().position(Position.Fixed).zIndex(1),
+        modifier = Modifier
+            .fillMaxSize()
+            .position(Position.Fixed)
+            .zIndex(1)
+            .styleModifier {
+                property("pointer-events", "none")
+            },
         verticalArrangement = Arrangement.Bottom,
         horizontalAlignment = Alignment.End
     ) {
@@ -54,6 +61,8 @@ fun BackToTopButton() {
                 .transition(CSSTransition(property = "visibility", duration = 300.ms))
                 .onClick {
                     document.documentElement?.scroll(x = 0.0, y = 0.0)
+                }.styleModifier {
+                    property("pointer-events", "auto")
                 }
         ) {
             FaArrowUp(

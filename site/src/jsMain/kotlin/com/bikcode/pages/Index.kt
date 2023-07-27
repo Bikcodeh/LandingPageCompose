@@ -2,6 +2,7 @@ package com.bikcode.pages
 
 import androidx.compose.runtime.*
 import com.bikcode.components.BackToTopButton
+import com.bikcode.components.OverflowMenu
 import com.bikcode.sections.*
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Box
@@ -14,13 +15,15 @@ import com.varabyte.kobweb.core.Page
 @Page
 @Composable
 fun HomePage() {
+    var menuOpened by remember { mutableStateOf(false) }
     Box(modifier = Modifier.fillMaxSize()) {
+        BackToTopButton()
         Column(
             modifier = Modifier.fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Top
+            verticalArrangement = Arrangement.Top,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            MainSection()
+            MainSection(onMenuClicked = { menuOpened = true })
             AboutSection()
             ServiceSection()
             PortfolioSection()
@@ -30,6 +33,8 @@ fun HomePage() {
             ContactSection()
             FooterSection()
         }
-        BackToTopButton()
+        if (menuOpened) {
+            OverflowMenu(onMenuClosed = { menuOpened = false })
+        }
     }
 }

@@ -7,6 +7,7 @@ import com.bikcode.styles.LogoStyle
 import com.bikcode.styles.NavigationItemStyle
 import com.bikcode.util.Constants.FONT_FAMILY
 import com.bikcode.util.Res
+import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextDecorationLine
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
@@ -27,7 +28,9 @@ import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 
 @Composable
-fun Header() {
+fun Header(
+    onMenuClicked: () -> Unit
+) {
     val breakpoint = rememberBreakpoint()
     Row(
         modifier = Modifier.fillMaxWidth(if (breakpoint > Breakpoint.MD) 80.percent else 90.percent)
@@ -35,7 +38,7 @@ fun Header() {
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        LeftSide(breakpoint = breakpoint)
+        LeftSide(breakpoint = breakpoint, onMenuClicked = onMenuClicked)
         if (breakpoint > Breakpoint.MD) {
             RightSide()
         }
@@ -44,12 +47,16 @@ fun Header() {
 
 @Composable
 fun LeftSide(
+    onMenuClicked: () -> Unit,
     breakpoint: Breakpoint
 ) {
     Row(verticalAlignment = Alignment.CenterVertically) {
         if (breakpoint <= Breakpoint.MD) {
             FaBars(
-                modifier = Modifier.margin(right = 15.px),
+                modifier = Modifier
+                    .margin(right = 15.px)
+                    .cursor(Cursor.Pointer)
+                    .onClick { onMenuClicked() },
                 size = IconSize.XL
             )
         }
